@@ -1,0 +1,31 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Task name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Priority</th>
+        <th scope="col">Creation Date</th>
+        <th scope="col">Due Date</th>
+        <th scope="col">Comments</th>
+        <th scope="col">Subtask</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of taskLists">
+        <td>{{item.task}}</td>
+        <td>{{item.category}}</td>
+        <td>{{item.priority}}</td>
+        <td>{{item.creationDate | date: 'MM/dd/yyyy'}}</td>
+        <td>{{item.dueDate | date: 'MM/dd/yyyy'}}</td>
+        <td >{{item.comment}}</td>
+        <td *ngIf="item.subtask.length >= 0">{{item.subtask}}</td>
+        <!-- <td *ngIf="item.subtask">{{item.subtask}}</td> -->
+        <!-- <td >{{item.subtask}}</td> -->
+        <div class="container">
+          <button type="button">Edit</button>
+          <button type="button" (click)="deleteTask(item)">Delete</button>
+        </div>
+      </tr>
+    </tbody>
+  </table>

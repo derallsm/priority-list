@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "eg2.tslint",
+    "rbbit.typescript-hero",
+    "christian-kohler.path-intellisense",
+    "johnpapa.angular2",
+    "Angular.ng-template",
+    "jakethashi.vscode-angular2-emmet",
+    "natewallace.angular2-inline",
+    "Zignd.html-css-class-completion",
+    "esbenp.prettier-vscode"
+  ]
+}
