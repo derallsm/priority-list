@@ -4,15 +4,17 @@
         <label for="taskTitle">Task Title:</label>
         <br>
         <input type="text" name="taskName" formControlName="task" id="taskName" placeholder="Task Title" required>
-        <!-- <span *ngIf="taskForm.get('task').touched && taskForm.get('task').errors['required']" class="warning">Enter the tittle of the task</span> -->
-        <span *ngIf="taskForm.get('task').touched && taskForm.get('task').status == 'INVALID'" class="warning"><ngb-alert [dismissible]="false">Enter the tittle of the task</ngb-alert></span>
-        
+        <span *ngIf="taskForm.get('task').touched && taskForm.get('task').status == 'INVALID'" class="warning w-50">
+            <ngb-alert [dismissible]="false">Enter the tittle of the task</ngb-alert>
+        </span>
     </div>
     <div class="form-group">
         <label for="taskCategory">Category:</label>
         <br>
         <input type="text" name="taskCategory" id="taskCategory" formControlName="category" placeholder="Category" required>
-        <span *ngIf="taskForm.get('category').touched && taskForm.get('category').status == 'INVALID'" class="warning"><ngb-alert [dismissible]="false">Enter the category for this task</ngb-alert></span>
+        <span *ngIf="taskForm.get('category').touched && taskForm.get('category').status == 'INVALID'" class="warning">
+            <ngb-alert [dismissible]="false">Enter the category for this task</ngb-alert>
+        </span>
     </div>
     <div class="form-group">
         <label for="Priority">Priority:</label>
@@ -20,7 +22,9 @@
         <select id="priority" name="priority" class="form-control" formControlName="priority" required>
             <option *ngFor="let item of priority" [value]="item.name" >{{ item.name }}</option>
         </select>
-        <span *ngIf="taskForm.get('priority').touched && taskForm.get('priority').status == 'INVALID'" class="warning"><ngb-alert [dismissible]="false">Enter the priority of the task</ngb-alert></span>
+        <span *ngIf="taskForm.get('priority').touched && taskForm.get('priority').status == 'INVALID'" class="warning">
+            <ngb-alert [dismissible]="false">Enter the priority of the task</ngb-alert>
+        </span>
     </div>
     <div class="form-group">
         <label for="taskTitle">Due date</label>
@@ -33,11 +37,11 @@
         <br>
         <textarea name="comment" id="comment" cols="30" rows="10" formControlName="comment"></textarea>
     </div>
-    <button type="button" >Add sub-task</button>
+    <button type="button" class="btn btn-warning" id="btnSubtask" >Add sub-task</button>
     
     <div class="form-group">
-        <button type="submit"> Submit </button>
-        <button type="button" (click)="clearInput()">Clear</button>
+        <button type="submit" class="btn btn-info" id="btnSubmit"> Submit </button>
+        <button type="button" (click)="clearInput()" class="btn btn-danger" id="btnClear">Clear</button>
     </div>
     
 </form>
