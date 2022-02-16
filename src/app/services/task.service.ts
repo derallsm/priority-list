@@ -33,8 +33,10 @@ export class TaskService {
     this.tasks.push(task);
   }
 
-  deleteTask() {
-
+  deleteTask(item: MainTask) {
+    const index: number = this.tasks.indexOf(item);
+    this.tasks.splice(index, 1);
+    return this.tasks;
   }
 
   updateTask(task: MainTask) {
