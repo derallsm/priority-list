@@ -11,6 +11,8 @@ import { Priority } from 'src/app/models/priority.model';
 import { MainTask, Task } from 'src/app/models/task.model';
 import { Router } from '@angular/router';
 import { TaskService } from 'src/app/services/task.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @Component({
@@ -27,8 +29,14 @@ export class TaskComponent implements OnInit {
   ];
 
   taskForm: FormGroup;
+  validationModal: NgbModal | undefined;
 
-  constructor(private router: Router, private taskService: TaskService) {}
+  constructor(
+    private router: Router,
+    private taskService: TaskService,
+    // private modalService: NgbModal
+    private modal: NgbModal,
+  ) {}
 
   ngOnInit() {
     const subTaskData = {
@@ -50,14 +58,25 @@ export class TaskComponent implements OnInit {
     });
   }
 
-  submit() {
-    // console.log(this.taskForm);
-    this.taskService.addTask(this.taskForm.value as MainTask);
-    this.router.navigate(['']);
+  submit(invalidForm) {
+    if (this.validate()) {
+      this.taskService.addTask(this.taskForm.value as MainTask);
+      this.router.navigate(['']);
+    } else {
+      this.invalidFormGroup(invalidForm);
+    }
   }
 
   clearInput() {
     this.taskForm.reset();
+  }
+
+  validate() {
+    return this.taskForm.valid;
+  }
+
+  invalidFormGroup(invalidForm) {
+    this.modal.open(invalidForm);
   }
 
 

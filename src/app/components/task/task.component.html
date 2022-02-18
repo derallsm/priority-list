@@ -1,5 +1,5 @@
 
-<form autocomplete="off" [formGroup]="taskForm" (ngSubmit)="submit()" >
+<form autocomplete="off" [formGroup]="taskForm" (ngSubmit)="submit(invalidForm)" >
     <div class="form-group">
         <label for="taskTitle">Task Title:</label>
         <br>
@@ -43,5 +43,20 @@
         <button type="submit" class="btn btn-info" id="btnSubmit"> Submit </button>
         <button type="button" (click)="clearInput()" class="btn btn-danger" id="btnClear">Clear</button>
     </div>
-    
+
+    <ng-template #invalidForm let-modal id="invalidForm">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modal-basic-title">Form Error!</h2>
+          <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <div class="mb-3">
+                <p>The form has one or more required fields empty.</p>
+                <p>Please verify the fields and fill them as expected!</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('click')">Close</button>
+        </div>
+      </ng-template>
 </form>
