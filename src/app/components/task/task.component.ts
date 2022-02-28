@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import {
   FormBuilder,
   FormGroup,
@@ -34,11 +35,16 @@ export class TaskComponent implements OnInit {
   constructor(
     private router: Router,
     private taskService: TaskService,
-    // private modalService: NgbModal
     private modal: NgbModal,
+    private location: Location,
   ) {}
 
   ngOnInit() {
+
+    // if (this.location.getState != null) {
+    //   this.buildTaskForm(this.location.getState);
+    // }
+
     const subTaskData = {
       task: 'subTask',
       priority: null,
@@ -55,6 +61,21 @@ export class TaskComponent implements OnInit {
       dueDate: new FormControl(null, Validators.required),
       comment: new FormControl(null),
       subtask: new FormArray([new FormControl(subTaskData)]),
+    });
+
+
+    console.log(this.location.getState());
+  }
+
+  buildTaskForm(location?) {
+    this.taskForm = new FormGroup({
+      task: new FormControl(location , Validators.required),
+      category: new FormControl(null, Validators.required),
+      priority: new FormControl(null, Validators.required),
+      creationDate: new FormControl(new Date().toLocaleDateString()),
+      dueDate: new FormControl(null, Validators.required),
+      comment: new FormControl(null),
+      // subtask: new FormArray([new FormControl(subTaskData)]),
     });
   }
 
@@ -77,6 +98,11 @@ export class TaskComponent implements OnInit {
 
   invalidFormGroup(invalidForm) {
     this.modal.open(invalidForm);
+  }
+
+  updateTask(item: MainTask) {
+    //Show the info of the task
+    // this.taskForm = 
   }
 
 

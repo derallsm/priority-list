@@ -24,7 +24,7 @@
           <td>No subtask</td>
         </ng-template>
         <div class="container">
-          <button type="button"  routerLink="/edit-task" [state]="item" routerLinkActive="router-link-active" class="btn shadow-none"><img src="../../../assets/shared/pencil.png" id="editTask"></button>
+          <a type="button"  routerLink="/edit-task" [state]="item" routerLinkActive="router-link-active" class="btn shadow-none"><img src="../../../assets/shared/pencil.png" id="editTask"></a>
           <button type="button" class="btn shadow-none" (click)="deleteTask(item, content)"><img src="../../../assets/shared/delete.png" alt="deleteTask" id="deleteTask"></button>
         </div>
       </tr>
