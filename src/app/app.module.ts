@@ -17,9 +17,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const appRoutes: Routes = [
-  { path: 'task', component: TaskComponent},
   { path: '', component: TaskListsComponent},
-  // { path: 'task-lists', component: TaskListsComponent},
+  { path: 'new-task', component: TaskComponent},
+  { path: 'edit-task', component: TaskComponent},
 ];
 
 @NgModule({
