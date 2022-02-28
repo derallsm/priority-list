@@ -12,15 +12,16 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TaskListsComponent } from './components/task-lists/task-lists.component';
 import { TaskService } from './services/task.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppRoutingModule } from './app-routing.module';
 
 
 
 
-const appRoutes: Routes = [
-  { path: '', component: TaskListsComponent},
-  { path: 'new-task', component: TaskComponent},
-  { path: 'edit-task', component: TaskComponent},
-];
+// const appRoutes: Routes = [
+//   { path: '', component: TaskListsComponent},
+//   { path: 'new-task', component: TaskComponent},
+//   { path: 'edit-task', component: TaskComponent},
+// ];
 
 @NgModule({
   declarations: [
@@ -34,8 +35,9 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
-    NgbModule
+    // RouterModule.forRoot(appRoutes),
+    NgbModule,
+    AppRoutingModule
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]
