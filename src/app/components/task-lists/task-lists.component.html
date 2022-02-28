@@ -19,28 +19,29 @@
         <td>{{item.creationDate | date: 'MM/dd/yyyy'}}</td>
         <td>{{item.dueDate | date: 'MM/dd/yyyy'}}</td>
         <td >{{item.comment}}</td>
-        <!-- <td *ngIf="item.subtask.length >= 0">{{item.subtask}}</td> -->
         <td *ngIf="item.subtask.length >= 1;else noTask">{{item.subtask[0].task}}</td>
         <ng-template #noTask>
           <td>No subtask</td>
         </ng-template>
         <div class="container">
-          <input type="image" id="editTask" src="../../../assets/shared/pencil.png" (click)="editTask(item)"> 
-          <input type="image" id="deleteTask" src="../../../assets/shared/delete.png" (click)="deleteTask(item)">
-          <!-- <button type="button" (click)="deleteTask(item)">Delete</button> -->
+          <button type="button"  routerLink="/edit-task" [state]="item" routerLinkActive="router-link-active" class="btn shadow-none"><img src="../../../assets/shared/pencil.png" id="editTask"></button>
+          <button type="button" class="btn shadow-none" (click)="deleteTask(item, content)"><img src="../../../assets/shared/delete.png" alt="deleteTask" id="deleteTask"></button>
         </div>
       </tr>
     </tbody>
   </table>
 
+  <!-- Modal for the delete confirmation -->
   <ng-template #content delete-modal>
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Delete confirmation!</h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+      <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
     </div>
     <div class="modal-body">
-      <h3>Are you sure you want to delete this task?</h3>
-      <button type="button" class="primary" (click)="validateDelete(true)">Confirm</button>
-      <button type="button">Cancel</button>
+      <p>Are you sure you want to delete this task?</p>
+      <div class="container" id="containerBtnsConfirm">
+        <button type="button" class="primary" (click)="confirmDelete()" id="confirmBtn">Confirm</button>
+      <button type="button" (click)="close()" id="cancelBtn">Cancel</button>
+      </div>      
     </div>
   </ng-template>
